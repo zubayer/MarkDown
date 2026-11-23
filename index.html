@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f8f9fc" />
+    <meta name="description" content="Practice Markdown in ten hands-on challenges with a live preview, instant feedback, and a running score." />
+    <title>Markdown Lab | Interactive practice</title>
+    <link rel="icon" type="image/svg+xml" href="/node_modules/lucide/icons/code-xml.svg" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to workspace</a>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-icon" data-icon="code-xml"></span>
+        <span>Markdown<span class="brand-accent"> Lab</span></span>
+      </div>
+      <span class="top-divider" aria-hidden="true"></span>
+      <span class="top-caption">Practice workspace</span>
+      <div class="top-actions">
+        <button class="guide-btn" id="open-guide" type="button" data-testid="button-syntax-guide" aria-label="Syntax guide" title="Syntax guide"><span data-icon="book-open"></span><span class="guide-label">Syntax guide</span></button>
+        <div class="score" data-testid="text-score" aria-live="polite" title="Earn 10 points for each level completed in this session"><span data-icon="trophy"></span><span class="score-label">Score</span><strong id="score">0</strong><span class="score-max">/ 100</span></div>
+      </div>
+    </header>
+    <div class="app-shell">
+      <aside class="path" aria-label="Learning path">
+        <button class="path-toggle" type="button" aria-expanded="false" aria-controls="path-content" data-testid="button-learning-path"><span data-icon="list-tree"></span><strong>Learning path</strong><span id="mobile-progress">0/10</span><span class="path-chevron" data-icon="chevron-down"></span></button>
+        <div class="path-content" id="path-content">
+          <div class="path-intro">
+            <div class="eyebrow path-kicker">LEARNING PATH</div>
+            <h2>Challenges</h2>
+            <div class="path-progress"><progress id="progress" value="0" max="10" aria-label="Challenges completed"></progress><span id="progress-label">0 / 10 complete</span></div>
+          </div>
+          <nav id="levels" aria-label="Challenge levels"></nav>
+          <div class="path-note"><span data-icon="info"></span><p>Earn 10 points per level. Scores and drafts are kept in this session.</p></div>
+        </div>
+      </aside>
+      <main class="workspace" id="main" tabindex="-1">
+        <div class="work-inner">
+          <div class="lesson-top">
+            <div class="lesson-info">
+              <div class="lesson-meta"><span class="level-badge eyebrow" id="level-badge"></span><span class="meta-dot" aria-hidden="true"></span><span class="eyebrow" id="category"></span></div>
+              <h1 id="lesson-title" tabindex="-1"></h1>
+              <p id="lesson-description"></p>
+            </div>
+            <div class="lesson-controls" aria-label="Navigate challenges">
+              <button id="prev" class="button secondary" type="button" data-testid="button-previous-level"><span data-icon="arrow-left"></span><span>Previous</span></button>
+              <button id="next" class="button primary" type="button" data-testid="button-next-level"><span id="next-label">Next level</span><span data-icon="arrow-right"></span></button>
+            </div>
+          </div>
+          <section class="brief" aria-labelledby="brief-title">
+            <div class="brief-grid" aria-hidden="true"><span id="brief-mark">#</span></div>
+            <div class="brief-main">
+              <span class="brief-icon" data-icon="target"></span>
+              <div class="brief-content">
+                <h2 id="brief-title">Your challenge</h2>
+                <p id="instructions"></p>
+              </div>
+              <button class="button hint-button" id="hint-toggle" type="button" aria-expanded="false" aria-controls="hint" data-testid="button-show-hint"><span data-icon="lightbulb"></span><span id="hint-label">Show hint</span></button>
+            </div>
+            <div class="hint" id="hint" hidden><span class="hint-caption">TRY THIS SYNTAX</span><div id="hint-text"></div></div>
+          </section>
+          <section class="work-panes" aria-label="Markdown practice workspace">
+            <section class="pane source-pane" aria-labelledby="editor-title">
+              <div class="pane-head">
+                <h2 id="editor-title"><span data-icon="code-xml"></span> Markdown editor</h2>
+                <button class="reset-btn" id="reset" type="button" data-testid="button-reset-editor" title="Restore the starter text"><span data-icon="rotate-ccw"></span> Reset</button>
+              </div>
+              <div id="editor"></div>
+              <div class="pane-foot"><span class="file-type"><span data-icon="file-text"></span> challenge.md</span><span id="editor-stats">0 lines · 0 characters</span></div>
+            </section>
+            <section class="pane preview-pane" aria-labelledby="preview-title">
+              <div class="pane-head">
+                <h2 id="preview-title"><span data-icon="eye"></span> Live preview</h2>
+                <span class="live-pill"><span></span> Live</span>
+              </div>
+              <div id="preview" class="preview-content" data-testid="content-preview" tabindex="0" aria-label="Rendered Markdown"></div>
+              <div class="pane-foot preview-foot"><span>GitHub-flavored Markdown</span><span class="sanitized" id="sanitizer-status"><span data-icon="shield-check"></span><span id="sanitizer-label">HTML sanitized</span></span></div>
+            </section>
+          </section>
+          <section class="validation" aria-labelledby="validation-title">
+            <div class="validation-top"><div class="validation-heading"><span data-icon="list-checks"></span><h2 id="validation-title">Validation</h2><span class="validation-tag">UPDATES AS YOU TYPE</span></div><span class="check-summary" id="check-summary" data-testid="status-validation" aria-live="polite"></span></div>
+            <ul id="checks" class="checks"></ul>
+          </section>
+          <div class="work-bottom"><span><span data-icon="keyboard"></span> No submit button needed. Just write Markdown.</span><span id="lesson-counter">01 / 10</span></div>
+        </div>
+      </main>
+    </div>
+    <dialog id="guide" aria-labelledby="guide-title">
+      <div class="dialog-top">
+        <div><span class="eyebrow">QUICK REFERENCE</span><h2 id="guide-title">Markdown syntax guide</h2></div>
+        <form method="dialog"><button class="icon-button" aria-label="Close syntax guide" title="Close syntax guide" data-testid="button-close-guide"><span data-icon="x"></span></button></form>
+      </div>
+      <p class="dialog-description">Look up the syntax you need, then keep working right where you left off.</p>
+      <dl class="syntax-list" id="syntax-list"></dl>
+      <div class="dialog-foot"><span data-icon="shield-check"></span><p>The preview keeps supported formatting but strips scripts, embedded content, inline styles, and event attributes. Links can use HTTP, HTTPS, or mailto. Markdown images show their alt text without loading remote files.</p></div>
+    </dialog>
+    <dialog id="reset-dialog" class="reset-dialog" aria-labelledby="reset-title">
+      <div class="dialog-top"><h2 id="reset-title">Reset this draft?</h2></div>
+      <p class="dialog-description">This will restore the starter text for this level. Any points you’ve already earned will stay on your score.</p>
+      <form method="dialog" class="dialog-actions"><button class="button secondary" value="cancel" autofocus>Cancel</button><button class="button primary" id="confirm-reset" value="reset">Reset draft</button></form>
+    </dialog>
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>

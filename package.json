@@ -1,0 +1,26 @@
+{
+  "name": "markdown-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@codemirror/commands": "^6.8.1",
+    "@codemirror/lang-markdown": "^6.3.4",
+    "@codemirror/language": "^6.11.0",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/view": "^6.36.5",
+    "@fontsource-variable/jetbrains-mono": "^5.2.5",
+    "@fontsource-variable/plus-jakarta-sans": "^5.2.5",
+    "@lezer/highlight": "^1.2.1",
+    "dompurify": "^3.3.0",
+    "lucide": "npm:lucide-static@^0.468.0",
+    "markdown-it": "^14.1.0"
+  },
+  "devDependencies": {
+    "vite": "^6.4.0"
+  }
+}
