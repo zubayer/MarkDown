@@ -21,7 +21,17 @@ Open the local URL printed by Vite. To build for deployment:
 npm run build
 ```
 
-The static site is generated in `dist/`. For a static hosting service that builds from GitHub, set the build command to `npm ci && npm run build` and the output directory to `dist`.
+The static site is generated in `dist/`.
+
+## Deploy
+
+The repo includes `vercel.json` and `netlify.toml`, so both services pick up the right settings automatically when you import the repository:
+
+| Setting | Value |
+| --- | --- |
+| Build command | `npm run build` |
+| Output / publish directory | `dist` |
+| Environment variables | none |
 
 ## Push to GitHub
 
@@ -40,6 +50,7 @@ Replace the example remote with your repository URL. The included `.gitignore` e
 ## Source layout
 
 - `index.html`: Application shell, editor and preview panels, and dialogs.
+- `public/favicon.svg`: Browser tab icon.
 - `src/app.js`: Editor setup, lesson navigation, and session scoring.
 - `src/levels.js`: Challenge content, validation rules, and the syntax guide.
 - `src/markdown.js`: Markdown rendering and the custom HTML sanitization policy.
